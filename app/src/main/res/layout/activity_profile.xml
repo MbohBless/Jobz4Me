@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".ProfileActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="0dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_person"
+            android:id="@+id/user_image"/>
+    </androidx.cardview.widget.CardView>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/black"
+    android:layout_marginTop="10dp"
+    android:text="User_name"
+    android:textSize="18sp"
+    android:id="@+id/user_name"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="user email"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:drawableStartCompat="@drawable/ic_email"
+        android:drawablePadding="10dp"
+        app:drawableTint="@color/black"
+        android:id="@+id/user_email"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <EditText
+            android:layout_width="150dp"
+            android:maxWidth="200dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_key"
+            android:drawableTint="@color/black"
+            android:layout_marginTop="10dp"
+            tools:targetApi="m"
+            android:inputType="phone"
+            android:id="@+id/ed_phone_number"
+
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_done"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_vertical"
+            app:tint="#00B8D4"
+            android:id="@+id/btn_arrange"
+            android:visibility="gone"/>
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:textAllCaps="false"
+        android:id="@+id/btn_sign_out"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Jobs i Posted"
+        android:textStyle="bold"
+        android:id="@+id/my_jobs_posted"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/recycler_view"
+        />
+
+</LinearLayout>

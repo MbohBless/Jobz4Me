@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "854881041244",
+    "project_id": "jobz4me-cfc53",
+    "storage_bucket": "jobz4me-cfc53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854881041244:android:90c03ce79d576f87745f99",
+        "android_client_info": {
+          "package_name": "com.blesspearl.jobz4me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854881041244-k20ora4nlqdvtp60rchdj3fbp2h7u7iv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPhNBAPPBQmqilf1tINlAg12skvjiTO2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854881041244-k20ora4nlqdvtp60rchdj3fbp2h7u7iv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/drawable-v24/edittextbg.xml" value="0.225" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/drawable-v24/ic_search.xml" value="0.225" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/drawable/bottom_bg.xml" value="0.1" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/drawable/ic_done.xml" value="0.240625" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/drawable/ic_location.xml" value="0.240625" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/drawable/ic_map.xml" value="0.1037037037037037" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/drawable/ic_person.xml" value="0.20092592592592592" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/drawable/ic_school_24.xml" value="0.240625" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/drawable/ic_search.xml" value="0.225" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/activity_course_details.xml" value="0.22447916666666667" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/activity_home.xml" value="0.22" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/activity_post_job.xml" value="0.11145833333333334" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/activity_profile.xml" value="0.2223731884057971" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/activity_view_job.xml" value="0.25" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/bottom_sheet.xml" value="0.25" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/contact_bottom_sheet.xml" value="0.22447916666666667" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/fragment_courses.xml" value="0.3048090523338048" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/fragment_details.xml" value="0.25" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/fragment_form_fragment.xml" value="0.25" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/fragment_location.xml" value="0.35303265940902023" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/fragment_map_.xml" value="0.25" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/fragment_professional_jobs.rng" value="0.22447916666666667" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/fragment_professional_jobs.xml" value="0.25" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/fragment_unclassified_jobs.xml" value="0.17" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/item_course.xml" value="0.22447916666666667" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/item_course_long.xml" value="0.22447916666666667" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/item_job.xml" value="0.25" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/layout/number_dialog.xml" value="0.22327898550724637" />
+        <entry key="..\:/app/Jobz4Me/app/src/main/res/menu/menu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

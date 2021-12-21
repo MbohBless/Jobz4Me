@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Location_Fragment">
+    <fragment
+        android:id="@+id/google_maps"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/lin_layout"
+        android:visibility="gone"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="You are 2Km from the Job Location"
+            android:gravity="center"
+            android:id="@+id/distanceMessage"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+         android:textStyle="bold"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

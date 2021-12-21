@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/formFragment">
+
+    <fragment
+        android:id="@+id/formFragment"
+        android:name="com.blesspearl.jobz4me.Fragments.FormFragment"
+        android:label="form"
+        tools:layout="@layout/fragment_form_fragment" >
+        <action
+            android:id="@+id/action_form_fragment_to_map_Fragment"
+            app:destination="@id/map_Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+        <argument
+            android:name="location"
+            app:argType="string"
+            android:defaultValue="none" />
+    </fragment>
+    <fragment
+        android:id="@+id/map_Fragment"
+        android:name="com.blesspearl.jobz4me.Fragments.Map_Fragment"
+        android:label="map"
+        tools:layout="@layout/fragment_map_" >
+        <action
+            android:id="@+id/action_map_Fragment_to_formFragment"
+            app:destination="@id/formFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+    </fragment>
+</navigation>

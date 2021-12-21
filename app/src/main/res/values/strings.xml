@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Jobz4Me</string>
+    <string name="tab_1">Unclassified</string>
+    <string name="tab_2">Professional</string>
+    <string name="tab_3">Courses</string>
+    <string name="extended_fab_label">PostJob</string>
+    <string name="lorem">Duis elementum, lacus id dapibus venenatis, lorem mi convallis velit, a faucibus velit urna vel sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut ex est, tempor vitae convallis quis, accumsan non libero. Pellentesque sodales vehicula quam, in consectetur lectus accumsan malesuada. Sed et lorem nec sem accumsan viverra. Sed laoreet magna ac varius tempus. Aenean sodales elit nec fermentum convallis. Nunc commodo, ipsum quis scelerisque pretium, justo arcu vehicula dolor, sit amet dictum lorem risus nec ipsum. Proin venenatis massa ac diam tempor, ut pellentesque est convallis. Mauris ullamcorper justo risus, in bibendum turpis fermentum et. Donec nec quam vel tortor viverra ornare in sed dui. Morbi pharetra diam risus, ut congue mauris volutpat in. Nunc sollicitudin felis quis varius commodo. In ultricies libero eu rhoncus pellentesque.</string>
+    <string-array name="planets_array">
+        <item>Unclassified</item>
+        <item>Finance</item>
+        <item>Health</item>
+        <item>Fashion</item>
+        <item>Business</item>
+        <item>Technology</item>
+        <item>Science</item>
+        <item>Agriculture</item>
+        <item>Education</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

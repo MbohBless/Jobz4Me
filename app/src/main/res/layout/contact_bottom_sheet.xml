@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="10dp"
+
+    android:background="@drawable/bottom_bg">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Options"
+        android:layout_centerHorizontal="true"
+        android:drawablePadding="10dp"
+        android:textSize="18sp"
+        android:id="@+id/search_tv"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/search_tv"
+        android:id="@+id/iv"/>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Contact Via Email"
+    android:layout_below="@id/search_tv"
+    android:layout_marginTop="5dp"
+    android:drawableStart="@drawable/ic_email"
+    android:drawablePadding="20dp"
+    android:textColor="@color/black"
+    android:id="@+id/contact_email"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#575757"
+        android:layout_marginTop="10dp"
+        android:id="@+id/vv"
+        android:layout_below="@id/contact_email"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vv"
+        android:layout_marginTop="10dp"
+        android:text="Contact Via Call"
+        android:drawableStart="@drawable/ic_key"
+        android:drawablePadding="20dp"
+        android:textColor="@color/black"
+        android:id="@+id/contact_phone"/>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rootLayout"
+    tools:context=".HomeActivity">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="fixed">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/unclassified"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:icon="@drawable/ic_local"
+            android:text="@string/tab_1" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/professional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_school_24"
+            android:text="@string/tab_2" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/courses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_courses"
+            android:text="@string/tab_3" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="414dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tabLayout"
+        tools:ignore="SpeakableTextPresentCheck" />
+</RelativeLayout>

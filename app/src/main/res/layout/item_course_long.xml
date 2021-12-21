@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginVertical="5dp"
+    android:orientation="horizontal">
+    <ImageView
+            android:layout_width="150dp"
+        android:layout_height="110dp"
+        android:id="@+id/img_course"
+        android:src="@drawable/ic_calendar"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height='110dp'
+        android:layout_marginLeft="15dp"
+        android:orientation="vertical"
+        >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:maxLines="2"
+    android:ellipsize="end"
+    android:textSize="16sp"
+    android:id="@+id/title"
+    android:textStyle="bold"
+    android:text="This is the test for the heading "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lorem"
+            android:maxLines="2"
+            android:textSize="15sp"
+            android:id="@+id/headline"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Free"
+            android:textSize="14sp"
+            android:id="@+id/cost"/>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

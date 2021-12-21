@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
+    android:layout_marginTop="150dp"
+    android:background="@drawable/bottom_bg">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Results"
+        android:drawableStart="@drawable/ic_search"
+        android:layout_centerHorizontal="true"
+        android:drawablePadding="10dp"
+        android:textSize="18sp"
+        android:id="@+id/search_tv"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/search_tv"
+        android:id="@+id/iv"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/iv" />
+
+    <ProgressBar
+        android:id="@+id/progress_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="150dp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="nav_host_frag" type="id" />
+    <item name="reqDateTv" type="id" />
+    <item name="location" type="id" />
+    <item name="postedBy" type="id" />
+    <item name="date" type="id" />
+    <item name="qualification" type="id" />
+    <item name="name" type="id" />
+</resources>
