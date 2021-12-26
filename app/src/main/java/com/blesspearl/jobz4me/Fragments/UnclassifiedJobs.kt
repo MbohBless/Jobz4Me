@@ -10,60 +10,34 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blesspearl.jobz4me.Adapters.JobAdapter
 import com.blesspearl.jobz4me.Models.Jobz
-import com.blesspearl.jobz4me.Models.Users
 import com.blesspearl.jobz4me.PostJobActivity
-import com.blesspearl.jobz4me.ProfileActivity
-import com.blesspearl.jobz4me.VMFactories.UViewModelFactory
-import com.blesspearl.jobz4me.ViewModels.UViewModel
+import com.blesspearl.jobz4me.VMFactories.HAViewModelFactory
+import com.blesspearl.jobz4me.ViewModels.HomeActivityViewModel
 import com.blesspearl.jobz4me.databinding.FragmentUnclassifiedJobsBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 
 
-class UnclassifiedJobs : Fragment(){
+class UnclassifiedJobs : Fragment() {
     private lateinit var binding: FragmentUnclassifiedJobsBinding
-    private lateinit var viewModel: UViewModel
+    private lateinit var viewModel: HomeActivityViewModel
 
     companion object {
         const val U_JOB_POST = "FRAGMENT_CLASSIFIED_JOBS"
     }
 
-    private var jobList: MutableList<Jobz> = ArrayList()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentUnclassifiedJobsBinding.inflate(inflater, container, false)
-
-        val factory = UViewModelFactory()
-        viewModel = ViewModelProvider(this,factory)[UViewModel::class.java]
+        val factory = HAViewModelFactory()
+        viewModel = ViewModelProvider(requireActivity(), factory)[HomeActivityViewModel::class.java]
         binding.unclassifiedClass.setOnClickListener {
             openPostActivity()
         }
-        viewModel.getJobz().observe(requireActivity(), {
+        viewModel.getUnclassifiedJobs().observe(requireActivity(), {
             displayJobs(it)
         })
-
-        val mRef = Firebase.database.getReference("Users")
-            .child(FirebaseAuth.getInstance().currentUser!!.uid)
-        mRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val user = snapshot.getValue(Users::class.java)
-                if (user?.number == null) {
-                    val intent = Intent(requireActivity(), ProfileActivity::class.java)
-                    intent.putExtra("Number", "Number")
-                    requireActivity().startActivity(intent)
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
-
+        viewModel.checkNumber(requireActivity())
 
         return binding.root
     }
@@ -75,12 +49,9 @@ class UnclassifiedJobs : Fragment(){
     }
 
     private fun displayJobs(jobList: List<Jobz>) {
-        binding.unClassifiedRecycle.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.unClassifiedRecycle.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.unClassifiedRecycle.adapter = JobAdapter(jobList, "Unclassified", requireActivity())
     }
-
-
 
 
 }

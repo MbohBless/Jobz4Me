@@ -2,12 +2,12 @@ package com.blesspearl.jobz4me.VMFactories
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.blesspearl.jobz4me.ViewModels.UViewModel
+import com.blesspearl.jobz4me.ViewModels.HomeActivityViewModel
 
-class UViewModelFactory():ViewModelProvider.Factory {
+class HAViewModelFactory:ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(UViewModel::class.java)){
-            return  UViewModel() as T
+        if (modelClass.isAssignableFrom(HomeActivityViewModel::class.java)){
+            return  HomeActivityViewModel() as T
         }
         throw IllegalArgumentException("UnknownViewModel")
     }

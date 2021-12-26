@@ -11,6 +11,7 @@ import android.view.View.GONE
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blesspearl.jobz4me.Adapters.CourseAdapter
@@ -18,6 +19,8 @@ import com.blesspearl.jobz4me.Interfaces.UdemyApiInterface
 import com.blesspearl.jobz4me.Models.Course
 import com.blesspearl.jobz4me.Models.Courses
 import com.blesspearl.jobz4me.R
+import com.blesspearl.jobz4me.VMFactories.HAViewModelFactory
+import com.blesspearl.jobz4me.ViewModels.HomeActivityViewModel
 import com.blesspearl.jobz4me.databinding.FragmentCoursesBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,14 +29,16 @@ import retrofit2.Response
 
 class Courses_Fragment : Fragment() {
     private lateinit var binding: FragmentCoursesBinding
-
+    private lateinit var viewModel: HomeActivityViewModel
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCoursesBinding.inflate(inflater, container, false)
+        val factory = HAViewModelFactory()
+        viewModel = ViewModelProvider(requireActivity(), factory)[HomeActivityViewModel::class.java]
         binding.cat1.text = "Business"
         binding.cat2.text = "Design"
         binding.cat3.text = "Development"
@@ -41,16 +46,32 @@ class Courses_Fragment : Fragment() {
         binding.cat5.text = "Marketing"
         binding.cat6.text = "Music"
 
-        callForDisplay(
-            category = "Business",
-            recyclerView = binding.recy1,
-            progress = binding.progress1
-        )
-        callForDisplay("Design", binding.recy2, binding.progress2)
-        callForDisplay("Development", binding.recy3, binding.progress3)
-        callForDisplay("Lifestyle", binding.recy4, binding.progress4)
-        callForDisplay("Marketing", binding.recy5, binding.progress5)
-        callForDisplay("Music", binding.recy6, binding.progress6)
+        viewModel.callForDisplay1("Business",requireContext()).observe(requireActivity(),{
+            displayCourses(it, binding.recy1)
+            binding.progress1.visibility= GONE
+        })
+        viewModel.callForDisplay2("Design",requireContext()).observe(requireActivity(),{
+            displayCourses(it, binding.recy2)
+            binding.progress2.visibility= GONE
+        })
+        viewModel.callForDisplay3("Development",requireContext()).observe(requireActivity(),{
+            displayCourses(it, binding.recy3)
+            binding.progress3.visibility= GONE
+        })
+        viewModel.callForDisplay4("Lifestyle",requireContext()).observe(requireActivity(),{
+            displayCourses(it, binding.recy4)
+            binding.progress4.visibility= GONE
+        })
+        viewModel.callForDisplay5("Marketing",requireContext()).observe(requireActivity(),{
+            displayCourses(it, binding.recy5)
+            binding.progress5.visibility= GONE
+        })
+        viewModel.callForDisplay6("Music",requireContext()).observe(requireActivity(),{
+            displayCourses(it, binding.recy6)
+            binding.progress6.visibility= GONE
+        })
+
+
 
         binding.search.setOnClickListener {
             val search = binding.searchEd.text.toString()
@@ -84,7 +105,7 @@ class Courses_Fragment : Fragment() {
 
     private fun getSearch(recyclerView: RecyclerView, progressBar: ProgressBar, search: String) {
         val udemyApiInterface = UdemyApiInterface.create().getSearch(search)
-        var courseList: MutableList<Course> = ArrayList()
+        val courseList: MutableList<Course> = ArrayList()
         udemyApiInterface.enqueue(object : Callback<Courses> {
             override fun onResponse(call: Call<Courses>, response: Response<Courses>) {
                 if (response.isSuccessful) {
@@ -105,37 +126,9 @@ class Courses_Fragment : Fragment() {
         })
     }
 
-
-    private fun callForDisplay(
-        category: String,
-        recyclerView: RecyclerView,
-        progress: ProgressBar
-    ) {
-        val udemyApiInterface = UdemyApiInterface.create().getCategories(category)
-        var courseList: MutableList<Course> = ArrayList()
-        udemyApiInterface.enqueue(object : Callback<Courses> {
-            override fun onResponse(call: Call<Courses>, response: Response<Courses>) {
-                if (response.isSuccessful) {
-                    Log.d("TESTOPPER", "onResponse:${response.body()} ")
-                    val courses: Courses = response.body()!!
-                    courseList.addAll(courses.results)
-                    progress.visibility = GONE
-                    displayCourses(courseList = courseList, recyclerView = recyclerView)
-                } else {
-                    Toast.makeText(context, "${response.code()}hello", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<Courses>, t: Throwable) {
-                Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
-            }
-
-        })
-    }
-
-    private fun displayCourses(courseList: MutableList<Course>, recyclerView: RecyclerView) {
+    private fun displayCourses(courseList: List<Course>, recyclerView: RecyclerView) {
         recyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = CourseAdapter(courseList, requireActivity(), "cat")
     }
 
