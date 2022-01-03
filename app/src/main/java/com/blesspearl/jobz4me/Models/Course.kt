@@ -8,7 +8,8 @@ class Course(
     var price: String,
     var visible_instructors: List<User>,
     var image_480x270: String,
-    var headline: String
+    var headline: String,
+    var id:Int
 ) : Serializable {
     override fun toString(): String {
         return "Course(title='$title', url='$url', price='$price', visible_instructors=$visible_instructors, image_480x270='$image_480x270', headline='$headline')"

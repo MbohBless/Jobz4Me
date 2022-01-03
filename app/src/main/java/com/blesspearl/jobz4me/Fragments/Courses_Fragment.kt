@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.view.View.GONE
 import android.widget.ProgressBar
@@ -15,16 +14,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blesspearl.jobz4me.Adapters.CourseAdapter
-import com.blesspearl.jobz4me.Interfaces.UdemyApiInterface
 import com.blesspearl.jobz4me.Models.Course
-import com.blesspearl.jobz4me.Models.Courses
 import com.blesspearl.jobz4me.R
 import com.blesspearl.jobz4me.VMFactories.HAViewModelFactory
 import com.blesspearl.jobz4me.ViewModels.HomeActivityViewModel
 import com.blesspearl.jobz4me.databinding.FragmentCoursesBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class Courses_Fragment : Fragment() {
@@ -46,33 +40,30 @@ class Courses_Fragment : Fragment() {
         binding.cat5.text = "Marketing"
         binding.cat6.text = "Music"
 
-        viewModel.callForDisplay1("Business",requireContext()).observe(requireActivity(),{
+        viewModel.callForDisplay1("Business", requireContext()).observe(requireActivity(), {
             displayCourses(it, binding.recy1)
-            binding.progress1.visibility= GONE
+            binding.progress1.visibility = GONE
         })
-        viewModel.callForDisplay2("Design",requireContext()).observe(requireActivity(),{
+        viewModel.callForDisplay2("Design", requireContext()).observe(requireActivity(), {
             displayCourses(it, binding.recy2)
-            binding.progress2.visibility= GONE
+            binding.progress2.visibility = GONE
         })
-        viewModel.callForDisplay3("Development",requireContext()).observe(requireActivity(),{
+        viewModel.callForDisplay3("Development", requireContext()).observe(requireActivity(), {
             displayCourses(it, binding.recy3)
-            binding.progress3.visibility= GONE
+            binding.progress3.visibility = GONE
         })
-        viewModel.callForDisplay4("Lifestyle",requireContext()).observe(requireActivity(),{
+        viewModel.callForDisplay4("Lifestyle", requireContext()).observe(requireActivity(), {
             displayCourses(it, binding.recy4)
-            binding.progress4.visibility= GONE
+            binding.progress4.visibility = GONE
         })
-        viewModel.callForDisplay5("Marketing",requireContext()).observe(requireActivity(),{
+        viewModel.callForDisplay5("Marketing", requireContext()).observe(requireActivity(), {
             displayCourses(it, binding.recy5)
-            binding.progress5.visibility= GONE
+            binding.progress5.visibility = GONE
         })
-        viewModel.callForDisplay6("Music",requireContext()).observe(requireActivity(),{
+        viewModel.callForDisplay6("Music", requireContext()).observe(requireActivity(), {
             displayCourses(it, binding.recy6)
-            binding.progress6.visibility= GONE
+            binding.progress6.visibility = GONE
         })
-
-
-
         binding.search.setOnClickListener {
             val search = binding.searchEd.text.toString()
             if (search.isNotBlank()) {
@@ -92,38 +83,17 @@ class Courses_Fragment : Fragment() {
         dialog.setContentView(R.layout.bottom_sheet)
         val recyclerView = dialog.findViewById<RecyclerView>(R.id.recycler_bottom)
         val progressBar: ProgressBar = dialog.findViewById(R.id.progress_bottom)
-        getSearch(recyclerView = recyclerView, progressBar = progressBar, search = search)
+        viewModel.getSearch(search = search).observe(requireActivity(), {
+            displaySearchCourses(it, recyclerView)
+            progressBar.visibility = GONE
+        })
         dialog.show()
         dialog.window!!.setLayout(
             ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
+            ViewGroup.LayoutParams.WRAP_CONTENT)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window!!.attributes.windowAnimations = R.style.DialogAnimation
         dialog.window!!.setGravity(Gravity.BOTTOM)
-    }
-
-    private fun getSearch(recyclerView: RecyclerView, progressBar: ProgressBar, search: String) {
-        val udemyApiInterface = UdemyApiInterface.create().getSearch(search)
-        val courseList: MutableList<Course> = ArrayList()
-        udemyApiInterface.enqueue(object : Callback<Courses> {
-            override fun onResponse(call: Call<Courses>, response: Response<Courses>) {
-                if (response.isSuccessful) {
-                    Log.d("TESTOPPER", "onResponse:${response.body()} ")
-                    val courses: Courses = response.body()!!
-                    courseList.addAll(courses.results)
-                    progressBar.visibility = GONE
-                    displaySearchCourses(courseList = courseList, recyclerView = recyclerView)
-                } else {
-                    Toast.makeText(context, "${response.code()}hello", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<Courses>, t: Throwable) {
-                Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
-            }
-
-        })
     }
 
     private fun displayCourses(courseList: List<Course>, recyclerView: RecyclerView) {
@@ -132,7 +102,7 @@ class Courses_Fragment : Fragment() {
         recyclerView.adapter = CourseAdapter(courseList, requireActivity(), "cat")
     }
 
-    private fun displaySearchCourses(courseList: MutableList<Course>, recyclerView: RecyclerView) {
+    private fun displaySearchCourses(courseList: List<Course>, recyclerView: RecyclerView) {
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = CourseAdapter(courseList, requireActivity(), "search")

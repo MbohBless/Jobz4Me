@@ -16,10 +16,7 @@ class CourseDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.title="Brief Course Details"
         val course = intent.getSerializableExtra("Course") as Course
-        Glide.with(this).load(course.image_480x270).into(
-            binding
-                .imageCourse
-        )
+        Glide.with(this).load(course.image_480x270).into(binding.imageCourse)
         binding.title.text = course.title
         binding.headline.text = course.headline
         binding.price.text = course.price
